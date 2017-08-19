@@ -8,17 +8,21 @@
 
 #carousel 
 	@extend .absolute-center
-	width: 100%
-
-ul
-	margin: 0
-	padding: 0
-	li
-		display: inline-block
+	width: 90%
+	overflow: hidden
+	ul
 		margin: 0
-		width: calc(20% - 10px)
-		overflow: hidden
+		padding: 0
+		width: 100%
 		position: relative
-		img 
-			object-fit: contain
-
+		li
+			display: inline-block
+			margin: 0
+			width: 20%
+			overflow: hidden
+			position: relative
+			float: left
+			img 
+				object-fit: contain
+				width: calc(100% - 5px)
+				

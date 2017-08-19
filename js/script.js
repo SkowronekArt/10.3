@@ -1,17 +1,25 @@
 
-$(function(){
+var carouselList = $("#carousel ul");
 
-var carouselList = $("#carousel");
+setInterval(changeSlide, 3000);
 
-	setInterval(function(changeSlide) {
-		carouselList.animate({ marginLeft: '-400px' }, 500, 
-			(function(moveFirstSlide) {
+function changeSlide() {
+	carouselList.animate(
+		{marginLeft: '-20%'},
+		1000,
+		moveFirstSlide
+	);
+}
 
-				var firstItem = carouselList.find("li:first");
-				var lastItem = carouselList.find("li:last");
-				lastItem.after(firstItem);
-				carouselList.css({marginLeft: '0'});
-			}),
-		);
-	}, 1000);
-});
+
+function moveFirstSlide() {
+	var firstItem = carouselList.find("li:first");
+	var lastItem = carouselList.find("li:last");
+	
+	firstItem.insertAfter(lastItem);
+	
+	carouselList.animate(
+		{marginLeft: '0'},
+		0
+	);
+}
