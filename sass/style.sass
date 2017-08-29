@@ -5,25 +5,31 @@
 	transform: translate(-50%,-50%)
 
 
-
 #carousel 
 	@extend .absolute-center
-	width: 1250px
 	overflow: hidden
+	width: 90%
 	ul
 		margin: 0
+		width: 100%
 		padding: 0
 		position: relative
 		display: -webkit-inline-box
-		height: 250px
 		li
-			display: inline-block
 			margin: 0
-			width: 250px
+			width: 20%
 			overflow: hidden
 			position: relative
-			float: left
 			img 
 				object-fit: contain
 				width: calc(100% - 5px)
-				
+#arrows
+	@extend .absolute-center
+	width: calc(100vw - 20px)
+	p 
+		display: inline
+		font: normal 100px/100px fantasy
+		span
+			color: black
+			&:nth-child(2)
+				float: right

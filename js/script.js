@@ -1,67 +1,72 @@
+$(function() {
+    var carouselList = $("#carousel ul"),
+        carouselListItem = $("#carousel ul li"),
+        firstItem = carouselList.find("li:first"),
+        lastItem = carouselList.find("li:last");
+    var arrows = $("#arrows p"),
+        leftArrow = arrows.find("span:first"),
+        rightArrow = arrows.find("span:last");
 
-var carouselList = $("#carousel ul");
+    var repeater = '';
+    $(arrows).mouseout(function(){
+        repeater =  setInterval(function() {
+            carouselList.find("li:first").clone().appendTo(carouselList);
+            carouselList.css({
+                'float': 'left'
+            });
 
-var firstItem = carouselList.find("li:first");
-var lastItem = carouselList.find("li:last");
+            carouselList.animate({
+                marginLeft: '-20%'
+                },
+                moveFirstSlide
+            );
+        },
+        1000);
+    });
+    $(arrows).mouseover(function() {
+         clearInterval(repeater);
+    });
 
-setInterval(changeSlide, 3000);
+    $(leftArrow).click(function() {
+        changeSlideToTheLeft();
+    });
+    $(rightArrow).click(function() {
+        changeSlideToTheRight();
+    });
 
-
-
-function changeSlide() {
-	carouselList.find("li:first").clone().appendTo(carouselList);
-	carouselList.animate({
-		marginLeft: '-250px', width: '1750px', marginRight: '-250px'
-		},
-		1000,
-		moveFirstSlide
-	);
-}
-function moveFirstSlide() {
-
-	carouselList.find("li:first").remove();
-	carouselList.animate({
-		marginLeft: '0', width: '1250px', marginRight: '0'
-		},
-		0
-	);
-}
-
-
- 
-
-
-
-
-
-/*
-var carouselList = $("#carousel ul");
-
-setInterval(changeSlide, 3000);
-
-function changeSlide() {
-	carouselList.animate(
-		{marginLeft: '-20%'},
-		1000,
-		moveFirstSlide
-	);
-}
-function moveFirstSlide() {
-	var firstItem = carouselList.find("li:first");
-	var lastItem = carouselList.find("li:last");
-	
-	firstItem.insertAfter(lastItem);
-	
-	carouselList.animate(
-		{marginLeft: '0'},
-		0
-	);
-	cloneFirstSlide()
-}
-
-
-function cloneFirstSlide() {
-$( "#carousel ul li" ).first().clone().prependTo( "ul" );
-}
-*/
-
+    function changeSlideToTheRight() {
+        carouselList.find("li:last").clone().prependTo(carouselList);
+        carouselList.css({
+            'float': 'right'
+        });
+        carouselList.animate({
+            marginRight: '-20%'
+        },500,
+        moveLastSlide()
+        );
+    }
+    function moveLastSlide() {
+        carouselList.find("li:last").remove();
+        carouselList.css({
+            marginRight: 0
+        });
+    }
+    
+    function changeSlideToTheLeft() {
+        carouselList.find("li:first").clone().appendTo(carouselList);
+        carouselList.css({
+            'float': 'left'
+        });
+        carouselList.animate({
+            marginLeft: '-20%'
+        },
+        moveFirstSlide
+        );
+    }
+    function moveFirstSlide() {
+        carouselList.find("li:first").remove();
+        carouselList.css({
+            marginLeft: 0
+        }); 
+    }
+});

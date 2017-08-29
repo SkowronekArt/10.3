@@ -1,7 +1,6 @@
 {
   "name": "10.3",
   "version": "1.0.0",
-  "description": "",
   "main": "Gruntfile.js",
   "dependencies": {
     "grunt": "^1.0.1",
@@ -9,7 +8,12 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-sass": "^2.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-sass": "^2.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,5 +26,6 @@
   "bugs": {
     "url": "https://github.com/SkowronekArt/10.3/issues"
   },
-  "homepage": "https://github.com/SkowronekArt/10.3#readme"
+  "homepage": "https://github.com/SkowronekArt/10.3#readme",
+  "description": ""
 }
