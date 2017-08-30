@@ -6,67 +6,72 @@ $(function() {
     var arrows = $("#arrows p"),
         leftArrow = arrows.find("span:first"),
         rightArrow = arrows.find("span:last");
-
     var repeater = '';
-    $(arrows).mouseout(function(){
-        repeater =  setInterval(function() {
-            carouselList.find("li:first").clone().appendTo(carouselList);
-            carouselList.css({
-                'float': 'left'
-            });
 
+    startCarousel();
+
+    function startCarousel() {
+        repeater = setInterval(function() {
+            carouselList.find("li:first")
+                        .clone()
+                        .appendTo(carouselList);
             carouselList.animate({
                 marginLeft: '-20%'
                 },
-                moveFirstSlide
+                100,
+                removeFirstSlide
             );
         },
         1000);
-    });
+    }
+
+//              on mouseOver
     $(arrows).mouseover(function() {
          clearInterval(repeater);
     });
+    $(arrows).mouseout(startCarousel);
 
-    $(leftArrow).click(function() {
-        changeSlideToTheLeft();
-    });
-    $(rightArrow).click(function() {
-        changeSlideToTheRight();
-    });
 
-    function changeSlideToTheRight() {
-        carouselList.find("li:last").clone().prependTo(carouselList);
-//        carouselList.css({
-//            'float': 'right'
-//        });
-        carouselList.animate({
-            marginRight: '-20%'
-        },500,
-        moveLastSlide()
-        );
-    }
-    function moveLastSlide() {
-        carouselList.find("li:last").remove();
-        carouselList.css({
-            marginRight: 0
-        });
-    }
-    
+//              on click
+    $(leftArrow).click(changeSlideToTheLeft);
+    $(rightArrow).click(changeSlideToTheRight);
+
+
+//              to the left
     function changeSlideToTheLeft() {
-        carouselList.find("li:first").clone().appendTo(carouselList);
-//        carouselList.css({
-//            'float': 'left'
-//        });
+        carouselList.find("li:first")
+                    .clone()
+                    .appendTo(carouselList);
         carouselList.animate({
             marginLeft: '-20%'
         },
-        moveFirstSlide
+        100,
+        removeFirstSlide
         );
     }
-    function moveFirstSlide() {
+    function removeFirstSlide() {
         carouselList.find("li:first").remove();
         carouselList.css({
             marginLeft: 0
-        }); 
+        });
+    }
+
+//              to the right
+    function changeSlideToTheRight() {
+        carouselList.find("li:last")
+                    .clone()
+                    .prependTo(carouselList);
+        carouselList.css({
+            marginLeft: '-20%'
+        });
+        carouselList.animate({
+            marginLeft: 0
+        },
+        100,
+        removeLastSlide
+        );
+    }
+    function removeLastSlide() {
+        carouselList.find("li:last").remove();
     }
 });
