@@ -36,9 +36,9 @@ $(function() {
 
     function changeSlideToTheRight() {
         carouselList.find("li:last").clone().prependTo(carouselList);
-        carouselList.css({
-            'float': 'right'
-        });
+//        carouselList.css({
+//            'float': 'right'
+//        });
         carouselList.animate({
             marginRight: '-20%'
         },500,
@@ -54,9 +54,9 @@ $(function() {
     
     function changeSlideToTheLeft() {
         carouselList.find("li:first").clone().appendTo(carouselList);
-        carouselList.css({
-            'float': 'left'
-        });
+//        carouselList.css({
+//            'float': 'left'
+//        });
         carouselList.animate({
             marginLeft: '-20%'
         },
