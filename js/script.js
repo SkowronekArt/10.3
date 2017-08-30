@@ -6,7 +6,7 @@ $(function() {
     var arrows = $("#arrows p"),
         leftArrow = arrows.find("span:first"),
         rightArrow = arrows.find("span:last");
-    var repeater = '';
+    var repeater;
 
     startCarousel();
 
@@ -44,16 +44,17 @@ $(function() {
                     .appendTo(carouselList);
         carouselList.animate({
             marginLeft: '-20%'
-        },
-        100,
-        removeFirstSlide
+            },
+            100,
+            removeFirstSlide
         );
     }
     function removeFirstSlide() {
         carouselList.find("li:first").remove();
         carouselList.css({
             marginLeft: 0
-        });
+            }
+        );
     }
 
 //              to the right
@@ -63,12 +64,13 @@ $(function() {
                     .prependTo(carouselList);
         carouselList.css({
             marginLeft: '-20%'
-        });
+            }
+        );
         carouselList.animate({
             marginLeft: 0
-        },
-        100,
-        removeLastSlide
+            },
+            100,
+            removeLastSlide
         );
     }
     function removeLastSlide() {
